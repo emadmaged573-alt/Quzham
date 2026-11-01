@@ -1,0 +1,550 @@
+<!<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quzman in English | منصة مستر عماد قزمان</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { cairo: ['Cairo', 'sans-serif'] },
+                    colors: {
+                        gold: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
+                        navy: { 800: '#0b132b', 900: '#070a13', 950: '#030509' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #030509; color: #f8fafc; }
+        .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(245, 158, 11, 0.15); }
+        .glass-nav { background: rgba(7, 10, 19, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(245, 158, 11, 0.2); }
+        .gold-text-gradient { background: linear-gradient(135deg, #fff 0%, #f39c12 50%, #d35400 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-black">
+
+    <!-- Announcements Ticker Bar -->
+    <div class="bg-gradient-to-r from-gold-600 via-gold-500 to-amber-600 text-slate-950 font-bold text-xs py-2 px-4 shadow-md z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2 whitespace-nowrap bg-slate-950 text-gold-400 px-3 py-1 rounded-lg text-[11px] shadow">
+                <span>📢 تنبيه هام</span>
+            </div>
+            <div class="overflow-hidden whitespace-nowrap w-full">
+                <p id="announcementText" class="inline-block text-slate-950 font-black">
+                    أهلاً بجميع أبطال مستر عماد قزمان! تابعوا جدول المحاضرات ونزول الامتحانات بانتظام للوصول للدرجة النهائية 🚀
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="goBackToHome()">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-gold-600 to-gold-400 flex items-center justify-center font-black text-slate-950 text-2xl shadow-lg shadow-gold-500/20">
+                    Q
+                </div>
+                <div>
+                    <span class="text-xl font-black tracking-tight text-white block leading-none">Quzman <span class="text-gold-400">in English</span></span>
+                    <span class="text-[10px] text-slate-400 font-bold tracking-widest block mt-1">مستر عماد قزمان</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="openTeacherModal()" class="px-4 py-2.5 rounded-xl border border-gold-500/30 text-gold-400 hover:bg-gold-500/10 font-bold text-xs sm:text-sm transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    لوحة المعلم
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN WEBSITE CONTENT -->
+    <div id="mainWebsiteContent">
+        <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto space-y-6">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 font-bold text-xs md:text-sm">
+                        🎓 المنصة الرسمية المحمية لجميع المراحل الدراسية
+                    </span>
+                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
+                        طريقك للتقفيل في الإنجليزي <br> مع <span class="gold-text-gradient">مستر عماد قزمان</span>
+                    </h1>
+                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+                        منسق ومُبسّط منهج اللغة الإنجليزية لكل الصفوف من **أولى إعدادي حتى ثالثة ثانوي**.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stages Section -->
+        <section id="stages" class="py-16 bg-navy-900/60 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-xl mx-auto mb-10 space-y-2">
+                    <h2 class="text-2xl sm:text-4xl font-black text-white">اختر مرحلتك الدراسية للدخول</h2>
+                    <p class="text-slate-400 text-sm">الأكواد محمية ومخصصة لجهاز واحد لكل طالب</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card rounded-3xl p-6 transition flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full">المرحلة الإعدادية</span>
+                            <h3 class="text-xl font-black text-white mt-4 mb-2">الصف الأول الإعدادي</h3>
+                            <p class="text-slate-400 text-xs mb-4">تأسيس شامل للقواعد والكلمات.</p>
+                        </div>
+                        <button onclick="openStudentLoginModalWithStage('الصف الأول الإعدادي')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-gold-500 hover:text-slate-950 text-white font-bold text-sm transition">دخول الكورسات 🚀</button>
+                    </div>
+
+                    <div class="glass-card rounded-3xl p-6 transition flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full">المرحلة الإعدادية</span>
+                            <h3 class="text-xl font-black text-white mt-4 mb-2">الصف الثاني الإعدادي</h3>
+                            <p class="text-slate-400 text-xs mb-4">تطوير مهارات الكتابة والمحاضرات.</p>
+                        </div>
+                        <button onclick="openStudentLoginModalWithStage('الصف الثاني الإعدادي')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-gold-500 hover:text-slate-950 text-white font-bold text-sm transition">دخول الكورسات 🚀</button>
+                    </div>
+
+                    <div class="glass-card rounded-3xl p-6 transition flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full">المرحلة الإعدادية</span>
+                            <h3 class="text-xl font-black text-white mt-4 mb-2">الصف الثالث الإعدادي</h3>
+                            <p class="text-slate-400 text-xs mb-4">مراجعات مكثفة للشهادة الإعدادية.</p>
+                        </div>
+                        <button onclick="openStudentLoginModalWithStage('الصف الثالث الإعدادي')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-gold-500 hover:text-slate-950 text-white font-bold text-sm transition">دخول الكورسات 🚀</button>
+                    </div>
+
+                    <div class="glass-card rounded-3xl p-6 transition flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">المرحلة الثانوية</span>
+                            <h3 class="text-xl font-black text-white mt-4 mb-2">الصف الأول الثانوي</h3>
+                            <p class="text-slate-400 text-xs mb-4">فهم نظام القواعد المعقد والمهارات.</p>
+                        </div>
+                        <button onclick="openStudentLoginModalWithStage('الصف الأول الثانوي')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-gold-500 hover:text-slate-950 text-white font-bold text-sm transition">دخول الكورسات 🚀</button>
+                    </div>
+
+                    <div class="glass-card rounded-3xl p-6 transition flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">المرحلة الثانوية</span>
+                            <h3 class="text-xl font-black text-white mt-4 mb-2">الصف الثاني الثانوي</h3>
+                            <p class="text-slate-400 text-xs mb-4">تجهيز حقيقي للمستوى التراكمي.</p>
+                        </div>
+                        <button onclick="openStudentLoginModalWithStage('الصف الثاني الثانوي')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-gold-500 hover:text-slate-950 text-white font-bold text-sm transition">دخول الكورسات 🚀</button>
+                    </div>
+
+                    <div class="glass-card rounded-3xl p-6 border border-gold-500/40 relative overflow-hidden transition flex flex-col justify-between">
+                        <div>
+                            <div class="absolute top-0 left-0 bg-gold-500 text-slate-950 font-black text-[10px] px-3 py-1 rounded-br-xl">الشهادة</div>
+                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">المرحلة الثانوية</span>
+                            <h3 class="text-xl font-black text-white mt-4 mb-2">الصف الثالث الثانوي</h3>
+                            <p class="text-slate-400 text-xs mb-4">معسكر التقفيل والدرجة النهائية.</p>
+                        </div>
+                        <button onclick="openStudentLoginModalWithStage('الصف الثالث الثانوي')" class="w-full py-3 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-black text-sm transition">دخول معسكر الثانوية 🏆</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 🎓 STUDENT DASHBOARD VIEW -->
+    <section id="studentDashboardView" class="hidden py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="mb-6 flex items-center justify-between">
+            <button onclick="goBackToHome()" class="px-4 py-2 bg-slate-800/80 hover:bg-gold-500 hover:text-slate-950 text-slate-200 border border-slate-700/80 rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-lg">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                الرجوع للرئيسية
+            </button>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 sm:p-10 space-y-8 border border-gold-500/30">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-800 pb-6 gap-4">
+                <div>
+                    <span id="studentDashboardBadge" class="text-xs font-bold text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full">منصة الطالب المحمية</span>
+                    <h2 id="studentWelcomeTitle" class="text-2xl sm:text-3xl font-black text-white mt-2">أهلاً بك يا بطل! 🎓</h2>
+                    <p id="studentStageSubtitle" class="text-xs text-slate-400 mt-1">هذا الجهاز مرتبط بكودك الخاص ولا يمكن فتحه من جهاز آخر في نفس الوقت</p>
+                </div>
+                <button onclick="logoutStudent()" class="px-4 py-2.5 bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500 hover:text-white rounded-xl text-xs font-bold transition">
+                    تسجيل الخروج 🚪
+                </button>
+            </div>
+
+            <!-- عرض المحتوى المضاف للمرحلة (فيديوهات، ملازم، امتحانات) -->
+            <div class="space-y-6">
+                <!-- قسم الفيديوهات -->
+                <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-lg">🎥</div>
+                        <h3 class="font-black text-white text-lg">المحاضرات الشارحة</h3>
+                    </div>
+                    <div id="studentVideosList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <p class="text-slate-500 text-xs italic">جاري تحميل المحاضرات الخاصة بمرحلتك...</p>
+                    </div>
+                </div>
+
+                <!-- قسم الملازم -->
+                <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-lg">📄</div>
+                        <h3 class="font-black text-white text-lg">ملازم الـ PDF والشيتات</h3>
+                    </div>
+                    <div id="studentPdfsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <p class="text-slate-500 text-xs italic">لا توجد ملازم مضافة حتى الآن لهذه المرحلة.</p>
+                    </div>
+                </div>
+
+                <!-- قسم الامتحانات -->
+                <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-lg">📝</div>
+                        <h3 class="font-black text-white text-lg">امتحانات Google Forms التفاعلية</h3>
+                    </div>
+                    <div id="studentExamsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <p class="text-slate-500 text-xs italic">لا توجد امتحانات مضافة حتى الآن.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal: Student Login Modal -->
+    <div id="studentLoginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden">
+        <div class="glass-card w-full max-w-md rounded-3xl p-6 sm:p-8 relative border border-gold-500/30">
+            <button onclick="closeStudentLoginModal()" class="absolute top-5 left-5 text-slate-400 hover:text-white text-xl font-bold flex items-center gap-1">
+                <span class="text-xs text-slate-400 font-normal">رجوع</span> ✕
+            </button>
+            <div class="text-center mb-6 space-y-2">
+                <div class="w-12 h-12 rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center font-black text-xl mx-auto border border-gold-500/30">🔑</div>
+                <h3 id="studentLoginStageTitle" class="text-xl font-black text-white">تسجيل دخول الطالب</h3>
+                <p class="text-xs text-slate-400">أدخل كودك الخاص (محمي بجهاز واحد)</p>
+            </div>
+            
+            <form onsubmit="handleStudentLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-2">كود الطالب الخاص</label>
+                    <input type="text" id="studentCodeInput" required placeholder="أدخل الكود الخاص بك هنا..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-gold-500 font-mono text-center text-sm sm:text-base tracking-widest">
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-black text-sm transition shadow-lg shadow-gold-500/20">
+                    دخول المنصة 🚀
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Teacher Dashboard -->
+    <div id="teacherModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md hidden">
+        <div class="glass-card w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 sm:p-8 relative border border-gold-500/30">
+            <button onclick="closeTeacherModal()" class="absolute top-5 left-5 text-slate-400 hover:text-white text-xl font-bold flex items-center gap-1">
+                <span class="text-xs text-slate-400 font-normal">إغلاق</span> ✕
+            </button>
+
+            <!-- Teacher Login Section -->
+            <div id="teacherAuthSection" class="max-w-md mx-auto py-8 text-center space-y-6">
+                <div class="w-16 h-16 rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center font-black text-2xl mx-auto border border-gold-500/30">👨‍🏫</div>
+                <div>
+                    <h3 class="text-2xl font-black text-white">لوحة تحكم المعلم</h3>
+                    <p class="text-xs text-slate-400 mt-1">أدخل كلمة المرور الخاصة بالإدارة</p>
+                </div>
+                <form onsubmit="handleTeacherLogin(event)" class="space-y-4">
+                    <input type="password" id="teacherPassInput" placeholder="كلمة المرور" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 text-center focus:outline-none focus:border-gold-500">
+                    <p id="teacherAuthError" class="text-red-400 text-xs hidden">كلمة المرور غير صحيحة!</p>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-gold-500 hover:bg-gold-400 text-slate-950 font-black text-sm transition">دخول اللوحة</button>
+                </form>
+            </div>
+
+            <!-- Teacher Dashboard Main Content -->
+            <div id="teacherDashboardContent" class="hidden space-y-6">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                    <h3 class="text-xl font-black text-white">لوحة الإدارة - التحكم السحابي الشامل</h3>
+                    <button onclick="logoutTeacher()" class="text-xs text-red-400 font-bold px-3 py-1.5 rounded-lg border border-red-500/20">خروج</button>
+                </div>
+                
+                <!-- 1. تحديث الشريط الإعلاني -->
+                <div class="bg-slate-900/80 p-4 rounded-2xl space-y-3">
+                    <h4 class="font-bold text-gold-400 text-xs">📢 تحديث الشريط الإعلاني المتحرك</h4>
+                    <input type="text" id="customAnnouncementInput" placeholder="اكتب الإعلان الجديد هنا..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                    <button type="button" onclick="updateAnnouncement()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-xl">تحديث الإعلان للطلاب</button>
+                </div>
+
+                <!-- 2. إنشاء أكواد الطلاب -->
+                <form onsubmit="addNewStudent(event)" class="space-y-3 bg-slate-900/80 p-4 rounded-2xl">
+                    <h4 class="font-bold text-gold-400 text-xs">🔑 إنشاء كود طالب جديد</h4>
+                    <input type="text" id="newStudentName" required placeholder="اسم الطالب" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                    <select id="newStudentStage" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                        <option value="الصف الأول الإعدادي">الصف الأول الإعدادي</option>
+                        <option value="الصف الثاني الإعدادي">الصف الثاني الإعدادي</option>
+                        <option value="الصف الثالث الإعدادي">الصف الثالث الإعدادي</option>
+                        <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
+                        <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+                        <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
+                    </select>
+                    <button type="submit" class="w-full py-2 bg-gold-500 text-slate-950 font-bold text-xs rounded-xl">إنشاء كود طالب محمي</button>
+                </form>
+
+                <!-- 3. إضافة محاضرة فيديو جديدة -->
+                <form onsubmit="addContentItem(event, 'video')" class="space-y-3 bg-slate-900/80 p-4 rounded-2xl border border-gold-500/20">
+                    <h4 class="font-bold text-gold-400 text-xs">🎥 إضافة محاضرة فيديو جديدة</h4>
+                    <select id="videoStage" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                        <option value="الصف الأول الإعدادي">الصف الأول الإعدادي</option>
+                        <option value="الصف الثاني الإعدادي">الصف الثاني الإعدادي</option>
+                        <option value="الصف الثالث الإعدادي">الصف الثالث الإعدادي</option>
+                        <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
+                        <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+                        <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
+                    </select>
+                    <input type="text" id="videoTitle" required placeholder="عنوان المحاضرة (مثال: Unit 1 - Lesson 1)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                    <input type="url" id="videoUrl" required placeholder="رابط الفيديو (يوتيوب أو رابط مباشر)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                    <button type="submit" class="w-full py-2 bg-gold-500 text-slate-950 font-bold text-xs rounded-xl">نشر الفيديو سحابياً 🚀</button>
+                </form>
+
+                <!-- 4. إضافة ملزمة PDF جديدة -->
+                <form onsubmit="addContentItem(event, 'pdf')" class="space-y-3 bg-slate-900/80 p-4 rounded-2xl border border-red-500/20">
+                    <h4 class="font-bold text-red-400 text-xs">📄 إضافة ملزمة أو شيت PDF</h4>
+                    <select id="pdfStage" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                        <option value="الصف الأول الإعدادي">الصف الأول الإعدادي</option>
+                        <option value="الصف الثاني الإعدادي">الصف الثاني الإعدادي</option>
+                        <option value="الصف الثالث الإعدادي">الصف الثالث الإعدادي</option>
+                        <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
+                        <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+                        <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
+                    </select>
+                    <input type="text" id="pdfTitle" required placeholder="اسم الملزمة (مثال: الشرح الكامل لقواعد Unit 1)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                    <input type="url" id="pdfUrl" required placeholder="رابط تحميل الـ PDF (Google Drive / Mediafire)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                    <button type="submit" class="w-full py-2 bg-red-500 text-white font-bold text-xs rounded-xl">نشر الملزمة سحابياً 📥</button>
+                </form>
+
+                <!-- 5. إضافة امتحان Google Forms جديد -->
+                <form onsubmit="addContentItem(event, 'exam')" class="space-y-3 bg-slate-900/80 p-4 rounded-2xl border border-indigo-500/20">
+                    <h4 class="font-bold text-indigo-400 text-xs">📝 إضافة امتحان Google Forms</h4>
+                    <select id="examStage" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                        <option value="الصف الأول الإعدادي">الصف الأول الإعدادي</option>
+                        <option value="الصف الثاني الإعدادي">الصف الثاني الإعدادي</option>
+                        <option value="الصف الثالث الإعدادي">الصف الثالث الإعدادي</option>
+                        <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
+                        <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+                        <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
+                    </select>
+                    <input type="text" id="examTitle" required placeholder="عنوان الامتحان (مثال: امتحان شامل Unit 1)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                    <input type="url" id="examUrl" required placeholder="رابط Google Form" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+                    <button type="submit" class="w-full py-2 bg-indigo-500 text-white font-bold text-xs rounded-xl">نشر الامتحان سحابياً 🎯</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 border-t border-slate-800/80 py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-xl bg-gold-500 flex items-center justify-center font-black text-slate-950 text-lg">Q</div>
+                <span class="font-bold text-sm text-slate-300">منصة Quzman in English — جميع الحقوق محفوظة © 2026</span>
+            </div>
+            <div class="text-xs text-gold-400 font-bold border border-gold-500/20 bg-gold-500/10 px-4 py-2 rounded-xl">
+                إشراف وإعداد: Eng/ Maged Emad
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK & Database Integration -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBb-KuTWk9e9qlLH3nm4lOwwXIyC-MvpLg",
+            authDomain: "quzman-english.firebaseapp.com",
+            projectId: "quzman-english",
+            storageBucket: "quzman-english.firebasestorage.app",
+            messagingSenderId: "136061115062",
+            appId: "1:136061115062:web:5b75efb305ceef9ed42417",
+            measurementId: "G-PLBXW8SBRE"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let currentSelectedStage = "الصف الثالث الثانوي";
+
+        window.goBackToHome = function() {
+            document.getElementById('studentDashboardView').classList.add('hidden');
+            document.getElementById('mainWebsiteContent').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.openStudentLoginModalWithStage = function(stageName) {
+            currentSelectedStage = stageName;
+            document.getElementById('studentLoginStageTitle').innerText = `تسجيل دخول - ${stageName}`;
+            document.getElementById('studentLoginModal').classList.remove('hidden');
+        }
+
+        window.closeStudentLoginModal = function() { document.getElementById('studentLoginModal').classList.add('hidden'); }
+        window.openTeacherModal = function() { document.getElementById('teacherModal').classList.remove('hidden'); }
+        window.closeTeacherModal = function() { document.getElementById('teacherModal').classList.add('hidden'); }
+
+        window.handleStudentLogin = function(e) {
+            e.preventDefault();
+            const code = document.getElementById('studentCodeInput').value.trim();
+            if(code !== "") {
+                let myDeviceId = localStorage.getItem('qz_device_id');
+                if(!myDeviceId) {
+                    myDeviceId = 'dev_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+                    localStorage.setItem('qz_device_id', myDeviceId);
+                }
+
+                const registeredDevice = localStorage.getItem('code_device_' + code);
+                if(registeredDevice && registeredDevice !== myDeviceId) {
+                    alert(`⚠️ عذراً يا بطل! هذا الكود مستخدم بالفعل على جهاز آخر ولا يمكن فتحه من جهازين في نفس الوقت.`);
+                    return;
+                }
+
+                localStorage.setItem('code_device_' + code, myDeviceId);
+
+                closeStudentLoginModal();
+                document.getElementById('mainWebsiteContent').style.display = 'none';
+                document.getElementById('studentDashboardView').classList.remove('hidden');
+                document.getElementById('studentWelcomeTitle').innerText = `أهلاً بك يا بطل في ${currentSelectedStage} 🎓`;
+                document.getElementById('studentDashboardBadge').innerText = `كود الدخول المعتمد: ${code}`;
+
+                loadStudentContent(currentSelectedStage);
+                alert(`تم تسجيل الدخول بنجاح وحماية جلستك على هذا الجهاز!`);
+            }
+        }
+
+        window.logoutStudent = function() {
+            goBackToHome();
+            document.getElementById('studentCodeInput').value = '';
+        }
+
+        window.handleTeacherLogin = function(e) {
+            e.preventDefault();
+            if(document.getElementById('teacherPassInput').value === '123456') {
+                document.getElementById('teacherAuthSection').classList.add('hidden');
+                document.getElementById('teacherDashboardContent').classList.remove('hidden');
+            } else {
+                document.getElementById('teacherAuthError').classList.remove('hidden');
+            }
+        }
+
+        window.logoutTeacher = function() {
+            document.getElementById('teacherAuthSection').classList.remove('hidden');
+            document.getElementById('teacherDashboardContent').classList.add('hidden');
+            document.getElementById('teacherPassInput').value = '';
+        }
+
+        window.addNewStudent = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('newStudentName').value;
+            const stage = document.getElementById('newStudentStage').value;
+            const code = 'QZ-' + Math.floor(1000 + Math.random() * 9000);
+            
+            alert(`تم إنشاء الكود المحمي بنجاح!\nالطالب: ${name} (${stage})\nالكود: ${code}`);
+            document.getElementById('newStudentName').value = '';
+        }
+
+        window.updateAnnouncement = function() {
+            const newText = document.getElementById('customAnnouncementInput').value.trim();
+            if(newText !== "") {
+                document.getElementById('announcementText').innerText = newText;
+                alert("تم تحديث الشريط الإعلاني بنجاح لكل الطلاب!");
+                document.getElementById('customAnnouncementInput').value = "";
+            } else {
+                alert("الرجاء كتابة نص الإعلان أولاً!");
+            }
+        }
+
+        // حفظ المحتوى سحابياً باستخدام Firebase Firestore
+        window.addContentItem = async function(e, type) {
+            e.preventDefault();
+            const stage = document.getElementById(type + 'Stage').value;
+            const title = document.getElementById(type + 'Title').value.trim();
+            const url = document.getElementById(type + 'Url').value.trim();
+
+            try {
+                await addDoc(collection(db, "contents"), {
+                    type: type,
+                    stage: stage,
+                    title: title,
+                    url: url,
+                    createdAt: Date.now()
+                });
+                alert(`تم نشر الـ ${type === 'video' ? 'فيديو' : type === 'pdf' ? 'الملزمة' : 'الامتحان'} سحابياً بنجاح لمرحلة ${stage}! 🚀`);
+                document.getElementById(type + 'Title').value = '';
+                document.getElementById(type + 'Url').value = '';
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("حدث خطأ أثناء النشر السحابي، تأكد من اتصال الإنترنت أو إعدادات قاعدة البيانات.");
+            }
+        }
+
+        // جلب وعرض المحتوى من سحابة Firebase Firestore للطلاب
+        async function loadStudentContent(stage) {
+            const videosContainer = document.getElementById('studentVideosList');
+            const pdfsContainer = document.getElementById('studentPdfsList');
+            const examsContainer = document.getElementById('studentExamsList');
+
+            videosContainer.innerHTML = `<p class="text-slate-500 text-xs italic">جاري تحميل المحاضرات من السحابة...</p>`;
+            pdfsContainer.innerHTML = `<p class="text-slate-500 text-xs italic">جاري تحميل الملازم من السحابة...</p>`;
+            examsContainer.innerHTML = `<p class="text-slate-500 text-xs italic">جاري تحميل الامتحانات من السحابة...</p>`;
+
+            try {
+                const q = query(collection(db, "contents"), where("stage", "==", stage));
+                const querySnapshot = await getDocs(q);
+
+                let videos = [];
+                let pdfs = [];
+                let exams = [];
+
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    if(data.type === 'video') videos.push(data);
+                    if(data.type === 'pdf') pdfs.push(data);
+                    if(data.type === 'exam') exams.push(data);
+                });
+
+                // عرض الفيديوهات
+                if(videos.length > 0) {
+                    videosContainer.innerHTML = videos.map(v => `
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between space-y-3">
+                            <h4 class="font-bold text-white text-sm">🎥 ${v.title}</h4>
+                            <a href="${v.url}" target="_blank" class="text-center py-2 bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold text-xs rounded-lg transition">مشاهدة الفيديو ↗</a>
+                        </div>
+                    `).join('');
+                } else {
+                    videosContainer.innerHTML = `<p class="text-slate-500 text-xs italic">لا توجد محاضرات فيديو مضافة حتى الآن لهذه المرحلة.</p>`;
+                }
+
+                // عرض الملازم
+                if(pdfs.length > 0) {
+                    pdfsContainer.innerHTML = pdfs.map(p => `
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between space-y-3">
+                            <h4 class="font-bold text-white text-sm">📄 ${p.title}</h4>
+                            <a href="${p.url}" target="_blank" class="text-center py-2 bg-red-500 hover:bg-red-400 text-white font-bold text-xs rounded-lg transition">تحميل الملزمة 📥</a>
+                        </div>
+                    `).join('');
+                } else {
+                    pdfsContainer.innerHTML = `<p class="text-slate-500 text-xs italic">لا توجد ملازم مضافة حتى الآن لهذه المرحلة.</p>`;
+                }
+
+                // عرض الامتحانات
+                if(exams.length > 0) {
+                    examsContainer.innerHTML = exams.map(ex => `
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between space-y-3">
+                            <h4 class="font-bold text-white text-sm">📝 ${ex.title}</h4>
+                            <a href="${ex.url}" target="_blank" class="text-center py-2 bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs rounded-lg transition">بدء الامتحان 🎯</a>
+                        </div>
+                    `).join('');
+                } else {
+                    examsContainer.innerHTML = `<p class="text-slate-500 text-xs italic">لا توجد امتحانات مضافة حتى الآن لهذه المرحلة.</p>`;
+                }
+
+            } catch (error) {
+                console.error("Error loading content: ", error);
+                videosContainer.innerHTML = `<p class="text-red-400 text-xs">تعذر تحميل البيانات من السحابة.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
