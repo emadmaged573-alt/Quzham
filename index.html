@@ -350,7 +350,7 @@
     <!-- Firebase SDK & Database Integration -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, collection, doc, setDoc, getDoc, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBb-KuTWk9e9qlLH3nm4lOwwXIyC-MvpLg",
@@ -383,32 +383,59 @@
         window.openTeacherModal = function() { document.getElementById('teacherModal').classList.remove('hidden'); }
         window.closeTeacherModal = function() { document.getElementById('teacherModal').classList.add('hidden'); }
 
-        window.handleStudentLogin = function(e) {
+        // التحقق الحقيقي من كود الطالب في قاعدة البيانات وحمايته بجهاز واحد
+        window.handleStudentLogin = async function(e) {
             e.preventDefault();
             const code = document.getElementById('studentCodeInput').value.trim();
-            if(code !== "") {
+            if(code === "") return;
+
+            try {
+                // جلب كود الطالب من قاعدة البيانات للتأكد من وجوده ومطابقته لمرحلته
+                const studentDocRef = doc(db, "students", code);
+                const studentDoc = await getDoc(studentDocRef);
+
+                if (!studentDoc.exists()) {
+                    alert("⚠️ عذراً يا بطل! هذا الكود غير صحيح أو غير مسجل في النظام. تواصل مع مستر عماد للحصول على الكود.");
+                    return;
+                }
+
+                const studentData = studentDoc.data();
+                
+                // التأكد من أن الطالب يسجل في مرحلته الصحيحة
+                if (studentData.stage !== currentSelectedStage) {
+                    alert(`⚠️ هذا الكود مخصص لـ (${studentData.stage}) وليس لـ (${currentSelectedStage})!`);
+                    return;
+                }
+
                 let myDeviceId = localStorage.getItem('qz_device_id');
                 if(!myDeviceId) {
                     myDeviceId = 'dev_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
                     localStorage.setItem('qz_device_id', myDeviceId);
                 }
 
-                const registeredDevice = localStorage.getItem('code_device_' + code);
-                if(registeredDevice && registeredDevice !== myDeviceId) {
+                // حماية الجهاز الواحد
+                if (studentData.deviceId && studentData.deviceId !== myDeviceId) {
                     alert(`⚠️ عذراً يا بطل! هذا الكود مستخدم بالفعل على جهاز آخر ولا يمكن فتحه من جهازين في نفس الوقت.`);
                     return;
                 }
 
-                localStorage.setItem('code_device_' + code, myDeviceId);
+                // لو الجهاز جديد على الكود ده، نسجله في السحابة
+                if (!studentData.deviceId) {
+                    await setDoc(studentDocRef, { deviceId: myDeviceId }, { merge: true });
+                }
 
                 closeStudentLoginModal();
                 document.getElementById('mainWebsiteContent').style.display = 'none';
                 document.getElementById('studentDashboardView').classList.remove('hidden');
-                document.getElementById('studentWelcomeTitle').innerText = `أهلاً بك يا بطل في ${currentSelectedStage} 🎓`;
+                document.getElementById('studentWelcomeTitle').innerText = `أهلاً بك يا ${studentData.name} في ${currentSelectedStage} 🎓`;
                 document.getElementById('studentDashboardBadge').innerText = `كود الدخول المعتمد: ${code}`;
 
                 loadStudentContent(currentSelectedStage);
                 alert(`تم تسجيل الدخول بنجاح وحماية جلستك على هذا الجهاز!`);
+
+            } catch (error) {
+                console.error("Login error:", error);
+                alert("حدث خطأ أثناء الاتصال بالسحابة، تحقق من الإنترنت.");
             }
         }
 
@@ -433,14 +460,27 @@
             document.getElementById('teacherPassInput').value = '';
         }
 
-        window.addNewStudent = function(e) {
+        // حفظ كود الطالب الحقيقي في فايربيس
+        window.addNewStudent = async function(e) {
             e.preventDefault();
-            const name = document.getElementById('newStudentName').value;
+            const name = document.getElementById('newStudentName').value.trim();
             const stage = document.getElementById('newStudentStage').value;
             const code = 'QZ-' + Math.floor(1000 + Math.random() * 9000);
             
-            alert(`تم إنشاء الكود المحمي بنجاح!\nالطالب: ${name} (${stage})\nالكود: ${code}`);
-            document.getElementById('newStudentName').value = '';
+            try {
+                await setDoc(doc(db, "students", code), {
+                    name: name,
+                    stage: stage,
+                    deviceId: "",
+                    createdAt: Date.now()
+                });
+
+                alert(`تم إنشاء الكود المحمي سحابياً بنجاح!\nالطالب: ${name} (${stage})\nالكود: ${code}`);
+                document.getElementById('newStudentName').value = '';
+            } catch (error) {
+                console.error("Error adding student: ", error);
+                alert("حدث خطأ أثناء حفظ الكود سحابياً.");
+            }
         }
 
         window.updateAnnouncement = function() {
@@ -454,7 +494,6 @@
             }
         }
 
-        // Save content to Firestore with explicit error alert
         window.addContentItem = async function(e, type) {
             e.preventDefault();
             const stage = document.getElementById(type + 'Stage').value;
@@ -474,11 +513,10 @@
                 document.getElementById(type + 'Url').value = '';
             } catch (error) {
                 console.error("Error adding document: ", error);
-                alert("Firebase Error: " + error.message + "\nتأكد من Firestore Rules عندك في فايربيس!");
+                alert("Firebase Error: " + error.message);
             }
         }
 
-        // Fetch content for students
         async function loadStudentContent(stage) {
             const videosContainer = document.getElementById('studentVideosList');
             const pdfsContainer = document.getElementById('studentPdfsList');
