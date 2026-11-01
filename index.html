@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -172,9 +172,8 @@
                 </button>
             </div>
 
-            <!-- عرض المحتوى المضاف للمرحلة (فيديوهات، ملازم، امتحانات) -->
             <div class="space-y-6">
-                <!-- قسم الفيديوهات -->
+                <!-- Video Section -->
                 <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-4">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-lg">🎥</div>
@@ -185,7 +184,7 @@
                     </div>
                 </div>
 
-                <!-- قسم الملازم -->
+                <!-- PDF Section -->
                 <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-4">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-lg">📄</div>
@@ -196,7 +195,7 @@
                     </div>
                 </div>
 
-                <!-- قسم الامتحانات -->
+                <!-- Exam Section -->
                 <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-4">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-lg">📝</div>
@@ -262,14 +261,14 @@
                     <button onclick="logoutTeacher()" class="text-xs text-red-400 font-bold px-3 py-1.5 rounded-lg border border-red-500/20">خروج</button>
                 </div>
                 
-                <!-- 1. تحديث الشريط الإعلاني -->
+                <!-- 1. Ticker Update -->
                 <div class="bg-slate-900/80 p-4 rounded-2xl space-y-3">
                     <h4 class="font-bold text-gold-400 text-xs">📢 تحديث الشريط الإعلاني المتحرك</h4>
                     <input type="text" id="customAnnouncementInput" placeholder="اكتب الإعلان الجديد هنا..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
                     <button type="button" onclick="updateAnnouncement()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-xl">تحديث الإعلان للطلاب</button>
                 </div>
 
-                <!-- 2. إنشاء أكواد الطلاب -->
+                <!-- 2. Student Code Gen -->
                 <form onsubmit="addNewStudent(event)" class="space-y-3 bg-slate-900/80 p-4 rounded-2xl">
                     <h4 class="font-bold text-gold-400 text-xs">🔑 إنشاء كود طالب جديد</h4>
                     <input type="text" id="newStudentName" required placeholder="اسم الطالب" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
@@ -284,7 +283,7 @@
                     <button type="submit" class="w-full py-2 bg-gold-500 text-slate-950 font-bold text-xs rounded-xl">إنشاء كود طالب محمي</button>
                 </form>
 
-                <!-- 3. إضافة محاضرة فيديو جديدة -->
+                <!-- 3. Add Video -->
                 <form onsubmit="addContentItem(event, 'video')" class="space-y-3 bg-slate-900/80 p-4 rounded-2xl border border-gold-500/20">
                     <h4 class="font-bold text-gold-400 text-xs">🎥 إضافة محاضرة فيديو جديدة</h4>
                     <select id="videoStage" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
@@ -300,7 +299,7 @@
                     <button type="submit" class="w-full py-2 bg-gold-500 text-slate-950 font-bold text-xs rounded-xl">نشر الفيديو سحابياً 🚀</button>
                 </form>
 
-                <!-- 4. إضافة ملزمة PDF جديدة -->
+                <!-- 4. Add PDF -->
                 <form onsubmit="addContentItem(event, 'pdf')" class="space-y-3 bg-slate-900/80 p-4 rounded-2xl border border-red-500/20">
                     <h4 class="font-bold text-red-400 text-xs">📄 إضافة ملزمة أو شيت PDF</h4>
                     <select id="pdfStage" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
@@ -316,7 +315,7 @@
                     <button type="submit" class="w-full py-2 bg-red-500 text-white font-bold text-xs rounded-xl">نشر الملزمة سحابياً 📥</button>
                 </form>
 
-                <!-- 5. إضافة امتحان Google Forms جديد -->
+                <!-- 5. Add Exam -->
                 <form onsubmit="addContentItem(event, 'exam')" class="space-y-3 bg-slate-900/80 p-4 rounded-2xl border border-indigo-500/20">
                     <h4 class="font-bold text-indigo-400 text-xs">📝 إضافة امتحان Google Forms</h4>
                     <select id="examStage" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
@@ -350,8 +349,8 @@
 
     <!-- Firebase SDK & Database Integration -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBb-KuTWk9e9qlLH3nm4lOwwXIyC-MvpLg",
@@ -455,7 +454,7 @@
             }
         }
 
-        // حفظ المحتوى سحابياً باستخدام Firebase Firestore
+        // Save content to Firestore with explicit error alert
         window.addContentItem = async function(e, type) {
             e.preventDefault();
             const stage = document.getElementById(type + 'Stage').value;
@@ -475,11 +474,11 @@
                 document.getElementById(type + 'Url').value = '';
             } catch (error) {
                 console.error("Error adding document: ", error);
-                alert("حدث خطأ أثناء النشر السحابي، تأكد من اتصال الإنترنت أو إعدادات قاعدة البيانات.");
+                alert("Firebase Error: " + error.message + "\nتأكد من Firestore Rules عندك في فايربيس!");
             }
         }
 
-        // جلب وعرض المحتوى من سحابة Firebase Firestore للطلاب
+        // Fetch content for students
         async function loadStudentContent(stage) {
             const videosContainer = document.getElementById('studentVideosList');
             const pdfsContainer = document.getElementById('studentPdfsList');
@@ -504,7 +503,6 @@
                     if(data.type === 'exam') exams.push(data);
                 });
 
-                // عرض الفيديوهات
                 if(videos.length > 0) {
                     videosContainer.innerHTML = videos.map(v => `
                         <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between space-y-3">
@@ -516,7 +514,6 @@
                     videosContainer.innerHTML = `<p class="text-slate-500 text-xs italic">لا توجد محاضرات فيديو مضافة حتى الآن لهذه المرحلة.</p>`;
                 }
 
-                // عرض الملازم
                 if(pdfs.length > 0) {
                     pdfsContainer.innerHTML = pdfs.map(p => `
                         <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between space-y-3">
@@ -528,7 +525,6 @@
                     pdfsContainer.innerHTML = `<p class="text-slate-500 text-xs italic">لا توجد ملازم مضافة حتى الآن لهذه المرحلة.</p>`;
                 }
 
-                // عرض الامتحانات
                 if(exams.length > 0) {
                     examsContainer.innerHTML = exams.map(ex => `
                         <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between space-y-3">
